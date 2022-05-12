@@ -30,7 +30,7 @@ class DetailRestaurantProvider extends ChangeNotifier {
       if (detailRestaurant.error) {
         _state = ResultState.NoData;
         notifyListeners();
-        return _message = 'Empty Data';
+        return _message = 'Data tidak ada';
       } else {
         _state = ResultState.HasData;
         notifyListeners();
@@ -40,7 +40,7 @@ class DetailRestaurantProvider extends ChangeNotifier {
       _state = ResultState.Error;
       notifyListeners();
       return _message =
-      "Terjadi kesalahan saat menghubungkan, silahkan cek koneksi anda!!";
+      "tidak bisa terhubung, silahkan cek koneksi anda";
     } catch (e) {
       _state = ResultState.Error;
       notifyListeners();

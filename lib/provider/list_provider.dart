@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:restaurantapp/data/api/service_api.dart';
 import 'package:restaurantapp/data/model/list_restaurant.dart';
@@ -29,12 +31,17 @@ class RestaurantListProvider extends ChangeNotifier {
       if (restaurant.restaurants.isEmpty) {
         _state = ResultState.NoData;
         notifyListeners();
-        return _message = 'Empty Data';
+        return _message = 'Data tidak ada';
       } else {
         _state = ResultState.HasData;
         notifyListeners();
         return _listRestaurant = restaurant;
       }
+    } on SocketException {
+      _state = ResultState.Error;
+      notifyListeners();
+      return _message =
+      "tidak bisa terhubung, silahkan cek koneksi anda";
     } catch (e) {
       _state = ResultState.Error;
       notifyListeners();

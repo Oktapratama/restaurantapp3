@@ -112,6 +112,41 @@ class DetailRestaurant extends StatelessWidget {
                 ),
               ],
             ),
+            Divider(color: Colors.grey),
+            SizedBox(height: 8),
+            Text('Review',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            SingleChildScrollView(
+              padding: const EdgeInsets.all(8),
+              scrollDirection: Axis.horizontal,
+              child: Column(
+                children: [
+                  Row(
+                    children: restaurant.customerReviews
+                        .map((review) => Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Text(review.name),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(review.review),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Text(review.date),
+                                  ],
+                                ),
+                              ],
+                            ))
+                        .toList(),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
